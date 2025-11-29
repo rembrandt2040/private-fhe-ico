@@ -1,9 +1,9 @@
 🔐 Private FHE ICO
 Fully Homomorphic Encryption Token Sale on Zama FHEVM
 
-Live Demo: https://private-fhe-ico.vercel.app
+Live Demo: https://privateico.vercel.app
 
-Demo Video: https://youtu.be/GLZ0zJuH-g0
+Demo Video: https://www.youtube.com/watch?v=GLZ0zJuH-g0
 
 Contract: 0xf640a469E72d1C63B4a58D7cc8750666e5C0DFe1 (Sepolia)
 
