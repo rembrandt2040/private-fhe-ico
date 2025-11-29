@@ -1,0 +1,132 @@
+<svg width="1080" height="840" viewBox="0 0 1080 840" xmlns="http://www.w3.org/2000/svg" font-family="Arial">
+  <style>
+    .title { font-size: 20px; font-weight: bold; }
+    .box { fill:#ffffff; stroke:#333333; stroke-width:2; rx:10; }
+    .fhe { fill:#e7f1ff; stroke:#4a90e2; stroke-width:2; rx:10; }
+    .arrow { stroke:#000; stroke-width:2; marker-end:url(#arrowhead); }
+    .label { font-size:13px; fill:#333; }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="540" y="40" class="title" text-anchor="middle">
+    Private FHE ICO — System Architecture (Zama FHEVM)
+  </text>
+
+  <!-- User Wallet -->
+  <rect x="50" y="120" width="260" height="120" class="box"/>
+  <text x="180" y="155" text-anchor="middle" class="title">User Wallet</text>
+  <text x="180" y="185" text-anchor="middle" class="label">
+    • Sends ETH (public msg.value)
+  </text>
+  <text x="180" y="205" text-anchor="middle" class="label">
+    • Submits raw uint64 amount
+  </text>
+
+  <!-- Smart Contract -->
+  <rect x="400" y="110" width="320" height="250" class="box"/>
+  <text x="560" y="145" text-anchor="middle" class="title">
+    PrivateICO Smart Contract
+  </text>
+
+  <text x="560" y="175" text-anchor="middle" class="label">
+    contribute(uint64 amount)
+  </text>
+
+  <rect x="430" y="190" width="260" height="60" class="fhe"/>
+  <text x="560" y="220" text-anchor="middle" class="label">
+    FHE.asEuint64(amount) → encryptedAmount
+  </text>
+
+  <rect x="430" y="260" width="260" height="60" class="fhe"/>
+  <text x="560" y="290" text-anchor="middle" class="label">
+    Homomorphic Add: encryptedTotalRaised = add(...)
+  </text>
+
+  <text x="560" y="345" text-anchor="middle" class="label">
+    encryptedAmount stored per user (Contribution struct)
+  </text>
+
+  <!-- KMS -->
+  <rect x="780" y="110" width="260" height="210" class="box"/>
+  <text x="910" y="145" text-anchor="middle" class="title">
+    Zama KMS
+  </text>
+
+  <text x="910" y="180" text-anchor="middle" class="label">
+    • Decrypts ciphertext after sale
+  </text>
+
+  <text x="910" y="205" text-anchor="middle" class="label">
+    • Produces ABI cleartext
+  </text>
+
+  <text x="910" y="230" text-anchor="middle" class="label">
+    • Generates FHE decryption proof
+  </text>
+
+  <!-- Decryption Calls -->
+  <rect x="400" y="390" width="320" height="200" class="box"/>
+  <text x="560" y="425" text-anchor="middle" class="title">
+    Decryption Flow (After Sale Ends)
+  </text>
+
+  <rect x="430" y="445" width="260" height="50" class="fhe"/>
+  <text x="560" y="475" text-anchor="middle" class="label">
+    makeTotalDecryptable()
+  </text>
+
+  <text x="560" y="505" text-anchor="middle" class="label">
+    → Encrypted total becomes decryptable by KMS
+  </text>
+
+  <rect x="430" y="525" width="260" height="50" class="fhe"/>
+  <text x="560" y="555" text-anchor="middle" class="label">
+    verifyAndSetTotal(clearBytes, proof)
+  </text>
+
+  <text x="560" y="580" text-anchor="middle" class="label">
+    → Sets clearTotalRaised
+  </text>
+
+  <!-- Token Contract -->
+  <rect x="400" y="640" width="320" height="150" class="box"/>
+  <text x="560" y="675" text-anchor="middle" class="title">
+    FHEPrivateToken Contract
+  </text>
+
+  <text x="560" y="705" text-anchor="middle" class="label">
+    claimTokens()
+  </text>
+
+  <text x="560" y="725" text-anchor="middle" class="label">
+    Uses clearAmount + clearTotalRaised to allocate tokens
+  </text>
+
+  <!-- Arrows -->
+  <line x1="310" y1="180" x2="400" y2="200" class="arrow"/>
+  <text x="345" y="165" class="label">ETH + amount</text>
+
+  <line x1="720" y1="230" x2="780" y2="230" class="arrow"/>
+  <text x="750" y="210" class="label">Encrypted Total</text>
+
+  <line x1="780" y1="260" x2="720" y2="300" class="arrow"/>
+  <text x="750" y="290" class="label">clearBytes + proof</text>
+
+  <line x1="560" y1="610" x2="560" y2="640" class="arrow"/>
+  <text x="590" y="620" class="label">Verified total</text>
+
+  <!-- User Decryption -->
+  <line x1="310" y1="230" x2="400" y2="260" class="arrow"/>
+  <text x="320" y="250" class="label">encryptedAmount</text>
+
+  <line x1="720" y1="300" x2="780" y2="300" class="arrow"/>
+  <text x="750" y="320" class="label">User decrypt request</text>
+
+</svg>

@@ -1,0 +1,92 @@
+WorkingPrivateICO Contract Tests
+    Deployment
+      √ Should set the correct owner
+      √ Should set the correct token address
+      √ Should initialize sale as not finalized
+      √ Should have correct sale duration (60 days)
+      √ Should have contracts properly linked
+      √ Should have correct hard cap set
+    Contributions
+      √ Should accept encrypted contributions during sale period
+      √ Should track multiple contributors
+      √ Should reject contributions with zero ETH (480ms)
+      √ Should reject contributions with zero amount
+      √ Should reject contributions after sale ends (60 days) (94ms)
+      √ Should store encrypted contribution for user
+      √ Should allow multiple contributions from same user
+    Hard Cap Enforcement
+      √ Should reject contributions that exceed hard cap
+      √ Should accept contribution exactly at hard cap
+      √ Should automatically close sale when hard cap is reached
+      √ Should reject contributions after hard cap is reached
+      √ Should prevent exceeding hard cap with multiple contributions
+      √ Should allow contributions up to hard cap from multiple contributors
+      √ Should close sale before 60 days if hard cap reached
+    Homomorphic Operations
+      √ Should calculate encrypted total correctly
+      √ Should maintain encryption during active sale
+    Sale Management
+      √ Should allow owner to close sale early
+      √ Should reject close sale from non-owner
+      √ Should allow closing sale multiple times (updates saleEnd) (173ms)
+      √ Should reject contributions after sale is closed early
+      √ Should automatically prevent contributions after 60 days
+    Decryption Process
+      √ Should allow making total decryptable after sale ends
+      √ Should reject making total decryptable while sale running
+      √ Should allow contributors to make their contribution decryptable
+      √ Should reject making contribution decryptable twice
+    Access Control
+      √ Should restrict owner-only functions
+      √ Should allow owner to perform owner functions
+    View Functions
+      √ Should return correct sale info
+      √ Should return encrypted total after contributions
+      √ Should return contributor count
+    Edge Cases
+      √ Should handle very small contributions
+      √ Should handle multiple contributors within hard cap
+      √ Should handle contribution exactly at sale end time
+      √ Should handle contribution amount at hard cap limit
+    Gas Optimization
+Gas used for contribution: 213084
+      √ Should use reasonable gas for contributions
+    Integration Tests - Full Lifecycle
+
+=== Full ICO Lifecycle Test with Hard Cap ===
+Step 1: Making contributions up to hard cap...
+✓ 3 contributors added
+✓ Hard cap of 0.1 ETH reached, sale auto-closed
+✓ Sale automatically closed when hard cap reached
+Step 2: Making total decryptable...
+✓ Total is now decryptable
+✓ Basic lifecycle test complete
+Note: Full token claiming requires KMS decryption proofs
+=== Full Lifecycle Complete ===
+
+      √ Should complete full ICO lifecycle with hard cap
+
+=== Full ICO Lifecycle Test with Manual Closure ===
+Step 1: Making partial contributions...
+✓ 2 contributors added (0.07 ETH total)
+Step 2: Owner closing sale manually...
+✓ Sale manually closed by owner
+Step 3: Making total decryptable...
+✓ Total is now decryptable
+✓ Manual closure lifecycle test complete
+=== Full Lifecycle Complete ===
+
+      √ Should complete full ICO lifecycle with early manual closure
+
+  FHECounter
+    √ encrypted count should be uninitialized after deployment
+    √ increment the counter by 1 (980ms)
+    √ decrement the counter by 1 (77ms)
+
+  FHECounterSepolia
+This hardhat test suite can only run on Sepolia Testnet
+    - increment the counter by 1
+
+
+  46 passing (5s)
+  1 pending
