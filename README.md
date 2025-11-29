@@ -97,13 +97,13 @@ Owner actions
 
 Explanation of the KMS limitation
 
-▶ https://youtu.be/GLZ0zJuH-g0
+▶ https://www.youtube.com/watch?v=GLZ0zJuH-g0
 
 🌐 Live Demo (Frontend)
 
 The React app is deployed on Vercel:
 
-👉 https://private-fhe-ico.vercel.app
+👉 https://privateico.vercel.app
 
 Features:
 
