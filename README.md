@@ -83,7 +83,7 @@ The demo video clearly highlights this limitation.
 
 📺 Demo Video (Required)
 
-A 60–90 second walkthrough demonstrating:
+A 180 second walkthrough demonstrating:
 
 Wallet connection
 
